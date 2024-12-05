@@ -1,0 +1,36 @@
+.calendar {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
+  width: 250px;
+}
+.calendar__header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.calendar__labels {
+  display: flex;
+  gap: 10px;
+}
+.calendar__label {
+  text-align: center;
+  width: 25px;
+}
+.calendar__month {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.calendar__week {
+  display: flex;
+  gap: 10px;
+}
+.calendar__day {
+  text-align: center;
+  width: 25px;
+}
+
+/*# sourceMappingURL=calendar.css.map */

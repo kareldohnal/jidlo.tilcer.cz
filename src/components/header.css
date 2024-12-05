@@ -1,0 +1,22 @@
+.header {
+  background: #BDD9BF;
+  display: flex;
+  justify-content: space-between;
+}
+.header__nav {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.header__navLink {
+  color: #000;
+  font-size: 24px;
+  text-decoration: none;
+  padding: 20px;
+}
+.header__navLink:hover {
+  background: #54457F;
+  color: #FFF;
+}
+
+/*# sourceMappingURL=header.css.map */

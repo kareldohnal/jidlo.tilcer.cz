@@ -1,0 +1,40 @@
+.calendar {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
+  width: 250px;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &__labels {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__label {
+    text-align: center;
+    width: 25px;
+  }
+
+  &__month {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__week {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__day {
+    text-align: center;
+    width: 25px;
+  }
+}
