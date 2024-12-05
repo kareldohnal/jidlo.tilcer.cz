@@ -1,22 +1,25 @@
 import LayoutWrapper from "../wrappers/LayoutWrapper.tsx";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {fetchMealPlanByDates} from "../api/mealPlan.ts";
 import Calendar from "../components/Calendar.tsx";
-import {getCurrentWeekStartDateEndDate} from "../utils/getCurrentWeekStartDateEndDate.ts";
+import {getCurrentWeekDates} from "../utils/getCurrentWeekDates.ts";
 import {DateType} from "../model/types.ts";
+import WeeklyMealPlan from "../components/WeeklyMealPlan.tsx";
+import {useQuery} from "@tanstack/react-query";
+import {MealDto} from "../model/dto/mealPlan.dto.ts";
 
 const MealPlanPage = () => {
-    const [weekStartDateEndDate, setWeekStartDateEndDate] = useState<[DateType, DateType]>(getCurrentWeekStartDateEndDate());
-
-    useEffect(() => {
-        fetchMealPlanByDates(weekStartDateEndDate[0], weekStartDateEndDate[1])
-            .then(mealPlan => console.log(mealPlan))
-    }, [weekStartDateEndDate])
-
+    const [selectedWeek, setSelectedWeek] = useState<DateType[]>(getCurrentWeekDates());
+    const { data } = useQuery({
+        queryKey: ['mealPlan', selectedWeek],
+        queryFn: () => fetchMealPlanByDates(selectedWeek[0], selectedWeek[6]),
+    })
+    console.log(selectedWeek)
     return (
         <LayoutWrapper>
             <h1>Meal Plan Page</h1>
-            <Calendar {...{setWeekStartDateEndDate}}/>
+            <Calendar {...{selectedWeek, setSelectedWeek}}/>
+            <WeeklyMealPlan data={data ?? [] as MealDto[]} {...{selectedWeek}} />
         </LayoutWrapper>
     );
 }

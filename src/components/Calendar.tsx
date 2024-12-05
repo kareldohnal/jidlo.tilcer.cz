@@ -5,10 +5,11 @@ import "./calendar.scss"
 import {DateType} from "../model/types.ts";
 
 type Props = {
-    setWeekStartDateEndDate: Dispatch<SetStateAction<[DateType, DateType]>>
+    selectedWeek: DateType[]
+    setSelectedWeek: Dispatch<SetStateAction<DateType[]>>
 }
 
-const Calendar = ({setWeekStartDateEndDate}: Props) => {
+const Calendar = ({selectedWeek, setSelectedWeek}: Props) => {
     const [displayMonth, setDisplayMonth] = useState<[number, number]>([new Date().getMonth() + 1, new Date().getFullYear()]);
 
     const handlePreviousMonth = () => {
@@ -19,8 +20,8 @@ const Calendar = ({setWeekStartDateEndDate}: Props) => {
         setDisplayMonth([displayMonth[0] === 12 ? 1 : displayMonth[0] + 1, displayMonth[0] === 12 ? displayMonth[1] + 1 : displayMonth[1]]);
     }
 
-    const handleWeekClick = (week: string[]) => () => {
-        setWeekStartDateEndDate([week[0] as DateType, week[week.length - 1] as DateType]);
+    const handleWeekClick = (week: DateType[]) => () => {
+        setSelectedWeek(week);
     }
 
     return (
@@ -42,7 +43,7 @@ const Calendar = ({setWeekStartDateEndDate}: Props) => {
             <div className={"calendar__month"}>
                 {getMonthToDayArray(displayMonth[0], displayMonth[1]).map((week, index) => {
                     return (
-                        <div key={index} className={"calendar__week"} onClick={handleWeekClick(week)}>
+                        <div key={index} className={`calendar__week${selectedWeek?.every((value, index) => value === week[index]) ? " active" : ""}`} onClick={handleWeekClick(week)}>
                             {week.map((day, index) => {
                                 return <div key={index} className={"calendar__day"}>{Number(day.split("-").pop())}</div>
                             })}

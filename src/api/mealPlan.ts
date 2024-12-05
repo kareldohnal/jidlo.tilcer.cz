@@ -1,5 +1,6 @@
 import {API_ROOT} from "../model/constants.ts";
 import {DateType} from "../model/types.ts";
+import {MealDto} from "../model/dto/mealPlan.dto.ts";
 
 export const fetchMealPlanByDates = async (startDate: DateType, endDate: DateType) => {
     try {
@@ -14,7 +15,7 @@ export const fetchMealPlanByDates = async (startDate: DateType, endDate: DateTyp
         }
 
         const data = await response.json();
-        return data.data
+        return data.data as MealDto[]
     } catch (error) {
         console.error('Error fetching /meal-plans:', error);
         throw error;

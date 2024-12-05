@@ -1,3 +1,5 @@
+@use "../partials/colors";
+
 .calendar {
   align-items: center;
   display: flex;
@@ -25,12 +27,17 @@
   &__month {
     display: flex;
     flex-direction: column;
-    gap: 10px;
   }
 
   &__week {
+    border-radius: 10px;
     display: flex;
     gap: 10px;
+    padding: 10px;
+
+    &.active {
+      background: colors.$color-green;
+    }
   }
 
   &__day {

@@ -1,6 +1,8 @@
-export const getMonthToDayArray = (month: number, year: number): string[][] => {
+import {DateType} from "../model/types.ts";
+
+export const getMonthToDayArray = (month: number, year: number): DateType[][] => {
     // Initialize the weeks array
-    const weeks: string[][] = [];
+    const weeks: DateType[][] = [];
 
     // Create date objects for the first and last day of the month
     const firstDayOfMonth = new Date(year, month - 1, 1);
@@ -18,14 +20,14 @@ export const getMonthToDayArray = (month: number, year: number): string[][] => {
 
     // Generate weeks
     while (currentDay <= daysInMonth) {
-        const week: string[] = [];
+        const week: DateType[] = [];
 
         for (let i = 0; i < 7; i++) {
             // Determine the date for the current cell
             const date = new Date(year, month - 1, currentDay);
 
             // Format date as YYYY-MM-DD
-            week.push(date.toISOString().split("T")[0]);
+            week.push(date.toISOString().split("T")[0] as DateType);
 
             currentDay++;
         }

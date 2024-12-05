@@ -1,8 +1,11 @@
-export interface MealPlanDto {
+import {MEALTIME} from "../enums.ts";
+
+export interface MealDto {
     id: number;
-    name: string;
-    description: string;
-    startDate: string;
-    endDate: string;
-    meals: MealDto[];
+    documentId: string;
+    date: string;
+    mealtime: MEALTIME;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
 }
