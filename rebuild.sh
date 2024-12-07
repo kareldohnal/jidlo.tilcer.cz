@@ -10,8 +10,7 @@ set -x
 cd "$(dirname "$0")"
 
 # Update the local repository with the latest changes
-git fetch
-git pull
+git fetch --all && git reset --hard origin/main
 
 # Install any new dependencies
 npm install
