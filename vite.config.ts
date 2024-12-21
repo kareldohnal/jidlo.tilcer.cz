@@ -14,4 +14,7 @@ export default defineConfig({
     __APP_VERSION__: JSON.stringify(version),
     __BUILD_TIME__: JSON.stringify(new Date().toISOString()), // ISO 8601 format for simplicity
   },
+  build: {
+    chunkSizeWarningLimit: 1024
+  }
 })
