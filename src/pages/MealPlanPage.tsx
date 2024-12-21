@@ -14,7 +14,7 @@ const MealPlanPage = () => {
         queryKey: ['mealPlan', selectedWeek],
         queryFn: () => fetchMealPlanByDates(selectedWeek[0], selectedWeek[6]),
     })
-    console.log(selectedWeek)
+
     return (
         <LayoutWrapper>
             <h1>Meal Plan Page</h1>

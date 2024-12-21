@@ -1,9 +1,11 @@
 @use "../partials/colors";
 
 .header {
+  align-items: center;
   background: colors.$color-green;
   display: flex;
   justify-content: space-between;
+  padding-right: 20px;
 
   &__nav {
     display: flex;
