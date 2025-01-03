@@ -16,7 +16,7 @@ export const getMonthToDayArray = (month: number, year: number): DateType[][] =>
     firstDayOfWeek = firstDayOfWeek === 0 ? 7 : firstDayOfWeek;
 
     // Calculate the starting day number (could be from the previous month)
-    let currentDay = 1 - (firstDayOfWeek - 2);
+    let currentDay = 1 - (firstDayOfWeek - 1);
 
     // Generate weeks
     while (currentDay <= daysInMonth) {

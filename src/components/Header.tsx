@@ -5,11 +5,13 @@ import {tokenAtom} from "../atomStore.ts";
 import {isJwtValid} from "../utils/isJwtValid.ts";
 import {fetchMe} from "../api/me.ts";
 import Login from "./Login.tsx";
-import {useQuery} from "@tanstack/react-query";
+import {useQuery, useQueryClient} from "@tanstack/react-query";
 import {Avatar, Button, Popover} from "antd";
+import {RESET} from 'jotai/utils'
 
 const Header = () => {
     const [token, setToken] = useAtom(tokenAtom);
+    const queryClient = useQueryClient();
 
     const tokenValid = isJwtValid(token);
 
@@ -19,8 +21,9 @@ const Header = () => {
         enabled: tokenValid,
     })
 
-    const handleLogout = () => {
-        setToken("")
+    const handleLogout = async () => {
+        queryClient.clear()
+        setToken(RESET)
     }
 
     return (
@@ -34,11 +37,11 @@ const Header = () => {
                     ?
                     <Popover
                         content={
-                        <Button onClick={handleLogout} block={true}>Logout</Button>
+                            <Button onClick={handleLogout} block={true}>Logout</Button>
                         }
                         title={`${userData?.firstName} ${userData?.lastName}`}
                         trigger="click">
-                        <Avatar size={40}>
+                        <Avatar size={40} style={{cursor: "pointer"}}>
                             {`${userData?.firstName.charAt(0).toUpperCase()}${userData?.lastName.charAt(0).toUpperCase()}`}
                         </Avatar>
                     </Popover>
