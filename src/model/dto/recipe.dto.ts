@@ -17,6 +17,15 @@ export interface TagDto {
     publishedAt: string; // ISO date string
 }
 
+export interface CuisineTagDto {
+    id: number;
+    documentId: string;
+    cuisineTag: string;
+    createdAt: string; // ISO date string
+    updatedAt: string; // ISO date string
+    publishedAt: string; // ISO date string
+}
+
 export interface Ingredient {
     id: number;
     documentId: string;
@@ -35,5 +44,6 @@ export interface RecipeDto {
     updatedAt: string; // ISO date string
     publishedAt: string; // ISO date string
     tags?: TagDto[];
+    cuisineTag: CuisineTagDto;
     ingredients?: Ingredient[];
 }
