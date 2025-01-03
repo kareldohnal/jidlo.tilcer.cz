@@ -61,7 +61,7 @@ const WeeklyMealPlan = ({data, selectedWeek}: Props) => {
         setSelectedMeal(meals?.find((meal: RecipeDto) => meal.documentId === value) ?? null)
     }
 
-    const addMeal = (recipe: RecipeDto) => () => {
+    const addMeal = (recipe: RecipeDto | null) => () => {
         if (dialogSetting?.date && dialogSetting?.mealtime && recipe) {
             postMealPlanMutation.mutate({
                 date: dialogSetting.date,
@@ -85,10 +85,10 @@ const WeeklyMealPlan = ({data, selectedWeek}: Props) => {
                 renderItem={(item) => (
                     <List.Item>
                         <Card title={`${getDayOfWeek(item)} ${getFormatedDate(item)}`}>
-                            {(!!data.filter((meal: MealDto) => meal.date === item).filter((meal: MealDto) => meal.mealtime === "breakfast").length || isTokenValid) && (
+                            {(!!data.filter((meal: MealDto) => meal.date === item).filter((meal: MealDto) => meal.mealtime === "breakfast" && meal.recipe).length || isTokenValid) && (
                                 <Divider orientation="left" style={{fontSize: "10px"}}>Snídaně</Divider>
                             )}
-                            {data.filter((meal: MealDto) => meal.date === item).filter((meal: MealDto) => meal.mealtime === "breakfast").map((meal: MealDto) => {
+                            {data.filter((meal: MealDto) => meal.date === item).filter((meal: MealDto) => meal.mealtime === "breakfast" && meal.recipe).map((meal: MealDto) => {
                                 return (
                                     <MealPlanCard key={meal.id} {...{meal, removeMeal}} />
                                 )
@@ -97,10 +97,10 @@ const WeeklyMealPlan = ({data, selectedWeek}: Props) => {
                                 date: item,
                                 mealtime: MEALTIME.BREAKFAST
                             })}>+</Button>}
-                            {(!!data.filter((meal: MealDto) => meal.date === item).filter((meal: MealDto) => meal.mealtime === "lunch").length || isTokenValid) && (
+                            {(!!data.filter((meal: MealDto) => meal.date === item).filter((meal: MealDto) => meal.mealtime === "lunch" && meal.recipe).length || isTokenValid) && (
                                 <Divider orientation="left" style={{fontSize: "10px"}}>Oběd</Divider>
                             )}
-                            {data.filter((meal: MealDto) => meal.date === item).filter((meal: MealDto) => meal.mealtime === "lunch").map((meal: MealDto) => {
+                            {data.filter((meal: MealDto) => meal.date === item).filter((meal: MealDto) => meal.mealtime === "lunch" && meal.recipe).map((meal: MealDto) => {
                                 return (
                                     <MealPlanCard key={meal.id} {...{meal, removeMeal}} />
                                 )
@@ -109,10 +109,10 @@ const WeeklyMealPlan = ({data, selectedWeek}: Props) => {
                                 date: item,
                                 mealtime: MEALTIME.LUNCH
                             })}>+</Button>}
-                            {(!!data.filter((meal: MealDto) => meal.date === item).filter((meal: MealDto) => meal.mealtime === "dinner").length || isTokenValid) && (
+                            {(!!data.filter((meal: MealDto) => meal.date === item).filter((meal: MealDto) => meal.mealtime === "dinner" && meal.recipe).length || isTokenValid) && (
                                 <Divider orientation="left" style={{fontSize: "10px"}}>Večeře</Divider>
                             )}
-                            {data.filter((meal: MealDto) => meal.date === item).filter((meal: MealDto) => meal.mealtime === "dinner").map((meal: MealDto) => {
+                            {data.filter((meal: MealDto) => meal.date === item).filter((meal: MealDto) => meal.mealtime === "dinner" && meal.recipe).map((meal: MealDto) => {
                                 return (
                                     <MealPlanCard key={meal.id} {...{meal, removeMeal}} />
                                 )
