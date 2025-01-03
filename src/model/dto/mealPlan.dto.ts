@@ -9,7 +9,7 @@ export interface MealDto {
     createdAt: string;
     updatedAt: string;
     publishedAt: string;
-    recipe: RecipeDto;
+    recipe?: RecipeDto;
 }
 
 export interface MealPlanPostDto {

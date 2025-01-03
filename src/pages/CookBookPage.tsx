@@ -129,7 +129,7 @@ const CookBookPage = () => {
     return (
         <LayoutWrapper>
             <Flex gap={"middle"}>
-                <Flex vertical={true}>
+                <Flex vertical={true} style={{minWidth: "30%", position: "sticky", top: "90px"}}>
                     <Space
                         style={{ padding: "10px", display: "flex", justifyContent: "space-between" }}
                     >
