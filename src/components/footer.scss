@@ -4,6 +4,10 @@
   display: grid;
   font-family: monospace;
   grid-template-columns: repeat(3, 1fr);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
 
   &__center {
     text-align: center;

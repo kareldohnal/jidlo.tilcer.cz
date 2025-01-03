@@ -11,7 +11,7 @@ const LayoutWrapper = ({children}: Props) => {
     return (
         <div className={"layoutWrapper"}>
             <Header/>
-            <main>
+            <main className={"layoutWrapper__content"}>
                 {children}
             </main>
             <Footer/>

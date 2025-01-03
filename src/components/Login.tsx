@@ -4,7 +4,7 @@ import {fetchToken} from "../api/fetchToken.ts";
 import {useQuery} from "@tanstack/react-query";
 import {tokenAtom} from "../atomStore.ts";
 import {useSetAtom} from "jotai/react";
-import { LockOutlined, UserOutlined } from '@ant-design/icons';
+import {LockOutlined, UserOutlined} from '@ant-design/icons';
 
 type FieldType = {
     username: string;
